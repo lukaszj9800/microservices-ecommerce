@@ -31,8 +31,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // 🔹 Wyłączenie CSRF dla API
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/users/register",
-                                "/users/login",
+                                "/auth/register",
+                                "/auth/login",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html"

@@ -15,15 +15,15 @@ import pl.jagiela.microservices_ecommerce.user_service.dto.request.LoginRequest;
 import pl.jagiela.microservices_ecommerce.user_service.dto.request.UserRegisterRequest;
 import pl.jagiela.microservices_ecommerce.user_service.service.UserService;
 
-@Tag(name = "User Controller", description = "User-related operations (registration and login)")
+@Tag(name = "Auth Controller", description = "User-related operations (registration and login)")
 @Validated
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/auth")
+public class AuthController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public AuthController(UserService userService) {
         this.userService = userService;
     }
 
