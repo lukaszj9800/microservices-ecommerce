@@ -1,0 +1,23 @@
+server:
+  port: 8082  # Inny port niż user-service
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/products_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Automatyczne tworzenie tabel
+    show-sql: true  # Wyświetlanie zapytań SQL w logach
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

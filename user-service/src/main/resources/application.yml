@@ -1,0 +1,28 @@
+server:
+  port: 8081  # Ustawienie portu serwisu użytkowników
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Automatyczne tworzenie tabel
+    show-sql: true  # Wyświetlanie zapytań SQL w konsoli
+jwt:
+  secret: 6b43b0d74f72be3e021f3a56a1a345f84f2c4d
+  expirationMs: 86400000  # 1 dzień
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
