@@ -12,31 +12,33 @@ spring:
           lower-case-service-id: true  # ID usług w małych literach
       routes:
         - id: user-service
-          uri: lb://user-service
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/api/users/**
-
-        - id: product-service
-          uri: lb://product-service
-          predicates:
-            - Path=/api/products/**
+            - Path=/api/v1/users/**
 
         - id: order-service
-          uri: lb://order-service
+          uri: lb://ORDER-SERVICE
           predicates:
-            - Path=/api/orders/**
+            - Path=/api/v1/orders/**
+
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
 
         - id: payment-service
-          uri: lb://payment-service
+          uri: lb://PAYMENT-SERVICE
           predicates:
-            - Path=/api/payments/**
+            - Path=/api/v1/payments/**
 
         - id: notification-service
-          uri: lb://notification-service
+          uri: lb://NOTIFICATION-SERVICE
           predicates:
-            - Path=/api/notifications/**
+            - Path=/api/v1/notifications/**
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/  # Adres serwera Eureka
+jwt:
+  secret: 6b43b0d74f72be3e021f3a56a1a345f84f2c4d
