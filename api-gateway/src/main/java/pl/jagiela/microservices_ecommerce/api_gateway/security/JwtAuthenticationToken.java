@@ -2,6 +2,7 @@ package pl.jagiela.microservices_ecommerce.api_gateway.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Collection;
 
 public class JwtAuthenticationToken extends AbstractAuthenticationToken {

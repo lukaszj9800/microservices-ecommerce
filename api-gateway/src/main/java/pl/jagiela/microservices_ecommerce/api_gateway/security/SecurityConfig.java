@@ -19,13 +19,12 @@ public class SecurityConfig {
         return ServerHttpSecurity.http()
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
-                        .pathMatchers("/api/v1/auth/register").permitAll() // 📌 Poprawiona składnia
-                        .pathMatchers("/user/**").hasRole("USER")
-                        .pathMatchers("/admin/**").hasRole("ADMIN")
+                        .pathMatchers("/api/v1/auth/register").permitAll()
+                        .pathMatchers("/api/v1/users/**").hasRole("USER")
+                        .pathMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .anyExchange().authenticated()
                 )
                 .authenticationManager(jwtAuthManager)
-                .securityContextRepository(new JwtSecurityContextRepository(jwtAuthManager))
                 .build();
     }
 }
