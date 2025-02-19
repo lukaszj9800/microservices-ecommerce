@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import pl.jagiela.microservices_ecommerce.user_service.dto.response.AuthResponse;
 import pl.jagiela.microservices_ecommerce.user_service.dto.request.LoginRequest;
 import pl.jagiela.microservices_ecommerce.user_service.dto.request.UserRegisterRequest;
+import pl.jagiela.microservices_ecommerce.user_service.dto.response.AuthResponse;
 import pl.jagiela.microservices_ecommerce.user_service.model.User;
 import pl.jagiela.microservices_ecommerce.user_service.repository.UserRepository;
 import pl.jagiela.microservices_ecommerce.user_service.security.JwtService;
@@ -52,5 +52,9 @@ public class UserService {
 
         String token = jwtService.generateToken(user.getUsername());
         return new AuthResponse(token);
+    }
+
+    public boolean ifUserExist(String username) {
+        return userRepository.existsByUsername(username);
     }
 }

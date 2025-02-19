@@ -1,14 +1,12 @@
 package pl.jagiela.microservices_ecommerce.user_service.security;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
 import java.util.Date;
 
 @Service
@@ -24,7 +22,7 @@ public class JwtService {
 
     @PostConstruct
     public void init() {
-        this.key = Jwts.SIG.HS256.key().build();
+        this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
     public String generateToken(String username) {
