@@ -5,12 +5,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.jagiela.microservices_ecommerce.user_service.dto.request.LoginRequest;
 import pl.jagiela.microservices_ecommerce.user_service.dto.request.UserRegisterRequest;
 import pl.jagiela.microservices_ecommerce.user_service.service.UserService;
@@ -46,5 +44,15 @@ public class AuthController {
     })
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(userService.loginUser(request));
+    }
+
+    @GetMapping("/exists/{username}")
+    @Operation(summary = "Check if user with given username exist", description = "Check if user with given username exist")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User with given id exist"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+    })
+    public ResponseEntity<?> ifUserExist(@PathVariable String username) {
+        return ResponseEntity.ok(userService.ifUserExist(username));
     }
 }
