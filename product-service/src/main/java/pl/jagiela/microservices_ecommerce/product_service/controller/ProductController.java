@@ -17,7 +17,7 @@ import java.util.List;
 @Tag(name = "Product Controller", description = "Product-related operations")
 @Validated
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/product")
 public class ProductController {
 
     private final ProductService productService;
@@ -33,7 +33,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @Operation(summary = "Get a product by ID")
+    @Operation(summary = "Get product by ID")
     @GetMapping("/{id}")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product with the given id has been downloaded"),
@@ -43,7 +43,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    @Operation(summary = "Add a new product")
+    @Operation(summary = "Add new product")
     @PostMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product successfully created"),
@@ -53,7 +53,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.createProduct(dto));
     }
 
-    @Operation(summary = "Update a product by ID")
+    @Operation(summary = "Update product by ID")
     @PutMapping("/{id}")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product successfully updated"),
@@ -64,7 +64,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.updateProduct(id, dto));
     }
 
-    @Operation(summary = "Delete a product by ID")
+    @Operation(summary = "Delete product by ID")
     @DeleteMapping("/{id}")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product successfully deleted"),
