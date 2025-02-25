@@ -36,7 +36,7 @@ public class UserService {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setPassword(request.getPassword());
         userRepository.save(user);
 
         return "User registered successfully";
