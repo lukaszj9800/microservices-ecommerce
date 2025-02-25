@@ -19,12 +19,12 @@ public class SecurityConfig {
         return ServerHttpSecurity.http()
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
-                        .pathMatchers("/api/v1/auth/register").permitAll()
-                        .pathMatchers("/api/v1/auth/login").permitAll()
-                        .pathMatchers("/api/v1/auth/exist").permitAll()
-                        .pathMatchers("/api/v1/users/**").hasRole("USER")
-                        .pathMatchers("/api/v1/admin/**").hasRole("ADMIN")
-                        .anyExchange().authenticated()
+                                .pathMatchers("/api/v1/users/auth/register").permitAll()
+                                .pathMatchers("/api/v1/users/auth/login").permitAll()
+                                .pathMatchers("/api/v1/users/auth/exists/**").permitAll()
+//                        .pathMatchers("/api/v1/users/**").hasRole("USER")
+                                .pathMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                                .anyExchange().authenticated()
                 )
                 .authenticationManager(jwtAuthManager)
                 .build();
